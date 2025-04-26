@@ -1,0 +1,63 @@
+CREATE TABLE TopLevelCustomField (
+    timestamp STRING(1024) NOT NULL,
+    customField JSON,
+    browserEvent STRING(255),
+    eventType STRING(255),
+    originalDardr STRING(255),
+    userAgentsMobileDevice STRING(255),
+    timeStampUnix INT64,
+    timeStampMinuteUTC INT64,
+    userAgentDevice STRING(255),
+    darid STRING(255),
+    cseListenerSequenceId STRING(255),
+    pageURLHostAndPath STRING(255),
+    serverTimestamp STRING(255),
+    timeOnPageTotal INT64,
+    userAgentOS STRING(255),
+    timeStampHourUTC INT64,
+    optedOut BOOL,
+    ubrid STRING(255),
+    timeStampMonthNumUTC INT64,
+    timeStampMonthUTC STRING(255),
+    timeStampDayUTC INT64,
+    eventId STRING(255),
+    userAgent STRING(255),
+    pageURL STRING(255),
+    pageURLPath STRING(255),
+    optumPixelId STRING(255),
+    timeStampYearUTC INT64,
+    userAgentBrowser STRING(255),
+    pageVisitEventCount INT64,
+    timeStampsSecondUTC INT64,
+    webServerHost STRING(255),
+    PRIMARY KEY(timestamp)
+);
+gcloud spanner databases ddl update \
+  --instance=your-instance-id \
+  --database=your-database-id \
+  --ddl="
+    CREATE TABLE CustomField (
+      id STRING(1024) NOT NULL,
+      CF_UHG_UHC_memberType STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_device_model STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_raliyid STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_device_type STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_device_brand STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_device_display2oom BOOL,
+      CF_UHG_UHC_UnitedHealthcareMobile_device_mobile BOOL,
+      CF_UHG_UHC_UnitedHealthcareMobile_device_systemVersion STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_device_application STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_application_previousRoute STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_device_OS STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_mobileSessionID STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_policyNumber STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_application_currentRoute STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_genoa_city STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_genoa_count INT64,
+      CF_UHG_UHC_UnitedHealthcareMobile_genoa_event STRING(255),
+      CF_UHG_UHC_UnitedHealthcareMobile_genoa_zipCode INT64,
+      CF_UHG_UHC_UnitedHealthcareMobile_genoa_timestamp INT64,
+      CF_UHG_UHC_UnitedHealthcareMobile_genoa_date STRING(255),
+      PRIMARY KEY(id)
+    );
+  "
