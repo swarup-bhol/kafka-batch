@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class SpannerDataLoader implements CommandLineRunner {
@@ -34,11 +35,11 @@ public class SpannerDataLoader implements CommandLineRunner {
 
         for (JsonNode node : jsonArray) {
             TopLevelCustomField topLevel = mapper.treeToValue(node, TopLevelCustomField.class);
-
-            JsonNode customFieldsNode = node.get("custom_fields");
-            if (customFieldsNode != null && !customFieldsNode.isNull()) {
-                topLevel.setCustomField(mapper.treeToValue(customFieldsNode, com.example.SpannerIngetion.entity.CustomField.class));
-            }
+             topLevel.setEventId(UUID.randomUUID().toString());
+//            JsonNode customFieldsNode = node.get("custom_fields");
+//            if (customFieldsNode != null && !customFieldsNode.isNull()) {
+//                topLevel.setCustomField(mapper.treeToValue(customFieldsNode, com.example.SpannerIngetion.entity.CustomField.class));
+//            }
 
             topLevelList.add(topLevel);
         }
